@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = trim($_POST['nom'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
+    $rol = $_POST['rol'] ?? 'usuari';
 
     // Validació
     $errors = [];
@@ -22,9 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $pdo->prepare("INSERT INTO usuaris (nom, email, password) VALUES (?, ?, ?)");
+        if ($_SESSION['usuari']['rol'] === 'admin') {
+            $rol = $_POST['rol'] ?? 'usuari'; // admin puede elegir
+        } else {
+            $rol = 'usuari'; // usuarios normales solo pueden crear usuarios con rol usuari
+        }
+        $stmt = $pdo->prepare("INSERT INTO usuaris (nom, email, password, rol) VALUES (?, ?, ?, ?)");
         try {
-            $stmt->execute([$nom, $email, $hashed_password]);
+            
+            $stmt->execute([$nom, $email, $hashed_password, $rol]);
             $_SESSION['message'] = 'Usuari creat correctament.';
             header('Location: index.php');
             exit;
@@ -57,6 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Nom: <input type="text" name="nom" required></label><br>
         <label>Email: <input type="email" name="email" required></label><br>
         <label>Contrasenya: <input type="password" name="password" required></label><br>
+        <?php if ($_SESSION['usuari']['rol'] === 'admin'): ?>
+            <label>Rol:
+                <select name="rol" required>
+                    <option value="admin">Admin</option>
+                    <option value="usuari">Usuari</option>
+                </select>
+            </label><br>
+        <?php endif; ?>
         <button type="submit">Crear</button>
     </form>
     <a href="index.php">Tornar al llistat</a>

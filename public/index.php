@@ -14,7 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS usuaris (
 $pdo->exec($sql);
 
 // Obtenir usuaris
-$stmt = $pdo->query("SELECT id, nom, email, data_creacio FROM usuaris ORDER BY data_creacio DESC");
+$stmt = $pdo->query("SELECT id, nom, email, rol, data_creacio FROM usuaris ORDER BY data_creacio DESC");
 $usuaris = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -39,6 +39,7 @@ $usuaris = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Email</th>
+                <th>Rol</th>
                 <th>Data de Creació</th>
                 <th>Accions</th>
             </tr>
@@ -49,13 +50,18 @@ $usuaris = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo htmlspecialchars($usuari['id']); ?></td>
                     <td><?php echo htmlspecialchars($usuari['nom']); ?></td>
                     <td><?php echo htmlspecialchars($usuari['email']); ?></td>
+                    <td><?php echo htmlspecialchars($usuari['rol'] ?? 'usuari'); ?></td>
                     <td><?php echo htmlspecialchars($usuari['data_creacio']); ?></td>
                     <td class="actions">
+                    <?php if ($_SESSION['usuari']['rol'] === 'admin'): ?>
                         <a href="editar.php?id=<?php echo $usuari['id']; ?>">Editar</a>
                         <form method="post" action="eliminar.php" style="display: inline;">
                             <input type="hidden" name="id" value="<?php echo $usuari['id']; ?>">
                             <button type="submit">Eliminar</button>
                         </form>
+                    <?php else: ?>
+                        No permès
+                    <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

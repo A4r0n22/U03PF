@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['usuari'] = [
             'id' => $usuari['id'],
             'nom' => $usuari['nom'],
-            'email' => $usuari['email']
+            'email' => $usuari['email'],
+            'rol' => $usuari['rol']
         ];
         header('Location: index.php');
         exit;
@@ -38,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    
 </head>
 <body>
     <h1>Login</h1>
