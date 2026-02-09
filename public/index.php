@@ -23,12 +23,9 @@ $usuaris = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Llistat d'Usuaris</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .actions { white-space: nowrap; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/stylesindex.css">
+
 </head>
 <body>
     <h1>Llistat d'Usuaris</h1>
