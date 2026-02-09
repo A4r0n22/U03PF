@@ -72,15 +72,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
 </head>
 <body>
+<div class="container">
     <h1>Editar Usuari</h1>
+
+    <?php if (!empty($message)): ?>
+        <p class="error"><?php echo $message; ?></p>
+    <?php endif; ?>
+
     <form method="post">
-        <label>Nom: <input type="text" name="nom" value="<?php echo htmlspecialchars($usuari['nom']); ?>" required></label><br>
-        <label>Email: <input type="email" name="email" value="<?php echo htmlspecialchars($usuari['email']); ?>" required></label><br>
-        <label>Contrasenya (deixar buit per no canviar): <input type="password" name="password"></label><br>
+        <label>Nom
+            <input type="text" name="nom" value="<?= htmlspecialchars($usuari['nom']) ?>" required>
+        </label>
+        <label>Email
+            <input type="email" name="email" value="<?= htmlspecialchars($usuari['email']) ?>" required>
+        </label>
+        <label>Nova contrasenya
+            <input type="password" name="password">
+        </label>
+
         <button type="submit">Actualitzar</button>
     </form>
-    <a href="index.php">Tornar al llistat</a>
+
+    <a href="index.php">← Tornar</a>
+</div>
 </body>
+
 </html>

@@ -44,14 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </head>
 <body>
-    <h1>Login</h1>
-    <?php if ($error): ?>
-        <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <form method="post">
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Contrasenya: <input type="password" name="password" required></label><br>
-        <button type="submit">Entrar</button>
-    </form>
+    <div class="container">
+        <h1>Login</h1>
+
+        <?php if ($error): ?>
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+
+        <form method="post">
+            <label>Email
+                <input type="email" name="email" required>
+            </label>
+            <label>Contrasenya
+                <input type="password" name="password" required>
+            </label>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 </body>
+
 </html>

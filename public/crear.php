@@ -57,23 +57,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Crear Usuari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
 </head>
 <body>
-    <h1>Crear Nou Usuari</h1>
+<div class="container">
+    <h1>Crear Usuari</h1>
+
+    <?php if (!empty($message)): ?>
+        <p class="error"><?php echo $message; ?></p>
+    <?php endif; ?>
+
     <form method="post">
-        <label>Nom: <input type="text" name="nom" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Contrasenya: <input type="password" name="password" required></label><br>
+        <label>Nom
+            <input type="text" name="nom" required>
+        </label>
+        <label>Email
+            <input type="email" name="email" required>
+        </label>
+        <label>Contrasenya
+            <input type="password" name="password" required>
+        </label>
+
         <?php if ($_SESSION['usuari']['rol'] === 'admin'): ?>
-            <label>Rol:
-                <select name="rol" required>
-                    <option value="admin">Admin</option>
+            <label>Rol
+                <select name="rol">
                     <option value="usuari">Usuari</option>
+                    <option value="admin">Admin</option>
                 </select>
-            </label><br>
+            </label>
         <?php endif; ?>
+
         <button type="submit">Crear</button>
     </form>
-    <a href="index.php">Tornar al llistat</a>
+
+    <a href="index.php">← Tornar</a>
+</div>
 </body>
+
 </html>

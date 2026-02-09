@@ -1,0 +1,78 @@
+/* ===== BASE ARCADE ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0c10;
+    color: #0ff;
+    font-family: 'Press Start 2P', monospace;
+    padding: 20px;
+    font-size: 10px;
+}
+
+h1 {
+    color: #f08;
+    text-shadow: 2px 2px #0ff;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+a {
+    color: #ff0;
+    text-decoration: none;
+}
+a:hover {
+    text-shadow: 0 0 5px #ff0;
+}
+
+/* ===== CONTENEDORES ===== */
+.container {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #020617;
+    padding: 20px;
+    border: 2px solid #0ff;
+}
+
+/* ===== FORMULARIOS ===== */
+label {
+    display: block;
+    margin-bottom: 12px;
+}
+
+input, select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    border: none;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+}
+
+button {
+    margin-top: 10px;
+    background: #f08;
+    color: #fff;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background: #f3a;
+    text-shadow: 0 0 4px #fff;
+}
+
+/* ===== MENSAJES ===== */
+.error {
+    background: #7f1d1d;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background: #14532d;
+    padding: 8px;
+    margin-bottom: 10px;
+}

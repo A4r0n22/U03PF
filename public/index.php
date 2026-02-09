@@ -3,7 +3,7 @@ session_start();
 include '../config/connexio.php';
 include '../config/auth.php';
 
-// Crear la taula si no existeix
+
 $sql = "CREATE TABLE IF NOT EXISTS usuaris (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,

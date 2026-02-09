@@ -28,16 +28,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <head>
                 <meta charset="UTF-8">
                 <title>Confirmar Eliminació</title>
+                <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
             </head>
             <body>
-                <h1>Confirmar Eliminació</h1>
-                <p>Estàs segur que vols eliminar l'usuari <strong><?php echo htmlspecialchars($usuari['nom']); ?> (<?php echo htmlspecialchars($usuari['email']); ?>)</strong>?</p>
-                <form method="post">
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                    <button type="submit" name="confirm" value="1">Sí, eliminar</button>
-                    <a href="index.php">Cancel·lar</a>
-                </form>
-            </body>
+<div class="container">
+    <h1>Eliminar Usuari</h1>
+
+    <p>
+        Estàs segur que vols eliminar:<br><br>
+        <strong><?= htmlspecialchars($usuari['nom']) ?></strong><br>
+        <?= htmlspecialchars($usuari['email']) ?>
+    </p>
+
+    <form method="post">
+        <input type="hidden" name="id" value="<?= $id ?>">
+        <button type="submit" name="confirm" value="1">Sí, eliminar</button>
+    </form>
+
+    <br>
+    <a href="index.php">Cancel·lar</a>
+</div>
+</body>
+
             </html>
             <?php
             exit;
